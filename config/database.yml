@@ -1,0 +1,26 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: password
+  host: localhost
+
+development:
+  <<: *default
+  database: pomodoro_development
+
+test:
+  <<: *default
+  database: pomodoro_test
+
+  url: <%= ENV['DATABASE_URL'] %>
+#
+production:
+  <<: *default
+  database: pomodoro_production
+  #username: pomodoro
+  #password: <%= ENV['POMODORO_DATABASE_PASSWORD'] %>
