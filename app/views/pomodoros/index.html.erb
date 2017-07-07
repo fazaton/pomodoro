@@ -9,8 +9,14 @@
     </div>
     
     <div class="settings_box col-10 offset-4">
-        <h3 id="session">Session</h3>
-        <h3 id='break'>Break</h3>
+        <form action="/action_page.php">
+          Session:<br>
+          <input type="number" id="box1" value="25">
+          <br>
+          Break<br>
+          <input type="number" id="box2" value="5">
+          <br><br>
+        </form> 
     </div>
     
     <div class="clock col-10 offset-4">
@@ -34,7 +40,7 @@
 <script>
     "use strict";
       
-    var bigTime = 1499; // time in seconds
+    var bigTime = document.getElementById('box1').value * 60; // time in seconds
     var mode = "normal";
     var animation = "fadeToBlack";
     
@@ -95,15 +101,15 @@
           
           // cooldown is 5min 
           mode = "cooldown";    
-          bigTime = 300;
+          bigTime = document.getElementById('box2').value * 60;
           
         } else if (mode == "cooldown") {
           
           // switch back to normal 25min mode
           mode = "normal";    
-          bigTime = 1499;  
+          bigTime = document.getElementById('box1').value;  
           
-          minutes.innerHTML = "25";
+          minutes.innerHTML = document.getElementById('box1').value;
           seconds.innerHTML = "00";
           
           document.body.style.background = "#" + color;
